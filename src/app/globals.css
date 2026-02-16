@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  /* Core Colors - Faz Que Vende Premium (Yellow/Amber Rebrand) */
+  --color-primary: #FACC15;
+  /* Vibrant Yellow */
+  --color-primary-hover: #EAB308;
+  --color-primary-light: rgba(250, 204, 21, 0.1);
+  --color-background: #020617;
+  /* Deeper Black/Blue for contrast */
+  --color-background-alt: #0F172A;
+  --color-card: rgba(30, 41, 59, 0.5);
+  --color-border-card: rgba(255, 255, 255, 0.08);
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-description: #CBD5E1;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+
+  /* Typography - Standardized Montserrat */
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-open-sans: "Open Sans", sans-serif;
+
+  /* Design Tokens */
+  --radius-card: 24px;
+  --radius-button: 16px;
+
+  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.3);
+  --shadow-primary: 0 0 30px rgba(250, 204, 21, 0.15);
+  --shadow-primary-strong: 0 0 50px rgba(250, 204, 21, 0.3);
+}
+
+:root {
+  --background: #020617;
+  --foreground: #F8FAFC;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-open-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Typography Helpers - Standardized Montserrat */
+.font-m-bold {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+}
+
+.font-m-extra {
+  font-family: var(--font-montserrat);
+  font-weight: 800;
+}
+
+.font-m-black {
+  font-family: var(--font-montserrat);
+  font-weight: 900;
+}
+
+.glass {
+  background: var(--color-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-card);
+  box-shadow: var(--shadow-premium);
+}
+
+/* Soul & Life Effects */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-on-scroll.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.heading-gradient {
+  background: linear-gradient(135deg, #FACC15 0%, #EAB308 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
