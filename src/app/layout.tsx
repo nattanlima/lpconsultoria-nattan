@@ -17,6 +17,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mentoria.prismeapp.com.br'),
   title: "Faz Que Vende | Consultoria com Nattan Lima",
   description: "1 Hora Exclusiva Para Destravar as Vendas do Seu Negócio. Estratégias personalizadas de WhatsApp, Chatbots, Tráfego Pago e Automação.",
 

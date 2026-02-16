@@ -82,12 +82,12 @@ export const Offer = () => {
 
                         <div className="flex flex-col items-center justify-center mb-16">
                             <div className="text-text-secondary line-through text-2xl font-medium mb-3 opacity-40">
-                                De R$ 297
+                                De R$ 697
                             </div>
                             <div className="flex items-start gap-1">
                                 <span className="text-3xl font-bold text-primary mt-6">R$</span>
                                 <span className="text-[7rem] md:text-[10rem] font-m-black heading-gradient leading-none tracking-tighter">
-                                    247,90
+                                    497,90
                                 </span>
                             </div>
                             <div className="px-6 py-2 rounded-lg bg-primary/10 text-primary text-xs font-m-black uppercase tracking-[0.3em] mt-6">
