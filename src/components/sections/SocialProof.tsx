@@ -131,25 +131,7 @@ export const SocialProof = () => {
                     ))}
                 </Marquee>
 
-                {/* Community evidence */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center"
-                >
-                    <p className="text-text-secondary text-[10px] font-m-black uppercase tracking-[0.4em] mb-12 opacity-50">Evidências da Comunidade</p>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                        {[1, 2, 3, 4].map(i => (
-                            <div key={i} className="aspect-[3/4] rounded-2xl border border-white/5 flex flex-col items-center justify-center p-6 grayscale hover:grayscale-0 transition-all duration-700 opacity-30 hover:opacity-100 bg-background-alt">
-                                <div className="h-12 w-12 rounded-full border border-primary/20 flex items-center justify-center mb-4">
-                                    <div className="h-2 w-2 rounded-full bg-primary" />
-                                </div>
-                                <span className="text-[10px] text-text-secondary font-m-black uppercase tracking-widest text-center">Feedback Real</span>
-                            </div>
-                        ))}
-                    </div>
-                </motion.div>
+
             </div>
         </section>
     );
