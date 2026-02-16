@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Gift, ShieldCheck } from "lucide-react";
+import { AnimatedList } from "@/components/ui/AnimatedList";
 
 const InclosureItem = ({ text }: { text: string }) => (
     <li className="flex items-start gap-4">
@@ -11,7 +12,7 @@ const InclosureItem = ({ text }: { text: string }) => (
 );
 
 const BonusCard = ({ icon: Icon, title, description }: { icon: React.ElementType, title: string, description: string }) => (
-    <div className="glass p-6 rounded-2xl border-primary/20 hover:border-primary/50 transition-colors">
+    <div className="p-6 rounded-2xl bg-background border border-primary/10 hover:border-primary/30 transition-colors group">
         <div className="flex items-center gap-3 mb-3 text-primary">
             <Icon className="h-6 w-6" />
             <span className="font-montserrat font-bold text-sm uppercase tracking-wider">{title}</span>
@@ -31,7 +32,7 @@ export const Inclusions = () => {
     ];
 
     return (
-        <section className="py-24">
+        <section className="section-dark-alt py-24">
             <div className="container px-6 mx-auto">
                 <div className="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
                     <div>
@@ -44,19 +45,11 @@ export const Inclusions = () => {
                             Tudo isso em 1 hora de consultoria:
                         </motion.h2>
 
-                        <ul className="space-y-6">
+                        <AnimatedList delay={200}>
                             {items.map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                >
-                                    <InclosureItem text={item} />
-                                </motion.div>
+                                <InclosureItem key={i} text={item} />
                             ))}
-                        </ul>
+                        </AnimatedList>
                     </div>
 
                     <div className="space-y-6">
@@ -64,7 +57,7 @@ export const Inclusions = () => {
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="glass p-8 rounded-radius-card border-primary/30 relative overflow-hidden"
+                            className="p-8 rounded-radius-card border border-primary/15 relative overflow-hidden bg-background"
                         >
                             <div className="absolute top-0 right-0 p-6 opacity-10">
                                 <ShieldCheck className="h-24 w-24 text-primary" />

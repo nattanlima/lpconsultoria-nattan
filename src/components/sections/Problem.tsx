@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { TrendingDown, MessageSquareX, Bot, BookOpen, AlertCircle } from "lucide-react";
+import { AnimatedShinyText } from "@/components/ui/AnimatedShinyText";
 
 const ProblemCard = ({ icon: Icon, title, description, delay }: { icon: React.ElementType, title: string, description: string, delay: number }) => (
     <motion.div
@@ -9,26 +10,26 @@ const ProblemCard = ({ icon: Icon, title, description, delay }: { icon: React.El
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-        className="glass p-10 rounded-[2.5rem] border-primary/10 hover:border-primary/40 transition-all duration-500 group relative overflow-hidden bg-background/40 hover:-translate-y-2"
+        className="card-light p-10 rounded-[2rem] hover:border-error/30 group relative overflow-hidden hover:-translate-y-2 transition-all duration-500"
     >
-        <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-            <Icon className="h-20 w-20 text-text-primary" />
+        <div className="absolute top-0 right-0 p-4 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity">
+            <Icon className="h-24 w-24 text-text-dark" />
         </div>
 
-        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-error/10 mb-8 group-hover:scale-110 group-hover:bg-error/20 transition-all duration-500 shadow-primary-strong/5">
-            <Icon className="h-8 w-8 text-error" />
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-error-light mb-8 group-hover:scale-110 transition-all duration-500">
+            <Icon className="h-7 w-7 text-error" />
         </div>
 
-        <h3 className="text-2xl font-m-black mb-5 text-text-primary leading-tight tracking-tight uppercase group-hover:text-primary transition-colors">
+        <h3 className="text-xl font-m-black mb-4 text-text-dark leading-tight tracking-tight uppercase group-hover:text-error transition-colors">
             {title}
         </h3>
 
-        <p className="text-text-description leading-relaxed font-medium opacity-80 group-hover:opacity-100 transition-opacity">
+        <p className="text-text-dark-description leading-relaxed font-medium">
             {description}
         </p>
 
         {/* Card Accent */}
-        <div className="absolute bottom-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-700" />
+        <div className="absolute bottom-0 left-0 h-1 w-0 bg-error group-hover:w-full transition-all duration-700 rounded-full" />
     </motion.div>
 );
 
@@ -41,7 +42,7 @@ export const Problem = () => {
         },
         {
             icon: MessageSquareX,
-            title: "Caos no WhatsApp Sales",
+            title: "Caos no WhatsApp Business",
             description: "Os leads chegam, mas o silêncio é mortal. O atendimento é lerdo, desorganizado e o dinheiro morre no 'vou ver e te falo'."
         },
         {
@@ -57,10 +58,7 @@ export const Problem = () => {
     ];
 
     return (
-        <section id="problemas" className="py-32 bg-background-alt relative overflow-hidden">
-            {/* Background Texture Overlay */}
-            <div className="absolute inset-0 opacity-[0.03] -z-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-
+        <section id="problemas" className="section-light py-32 relative overflow-hidden">
             <div className="container px-6 mx-auto relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -68,16 +66,18 @@ export const Problem = () => {
                     viewport={{ once: true }}
                     className="text-center max-w-4xl mx-auto mb-24"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-error/10 border border-error/20 text-error text-[10px] font-m-black uppercase tracking-[0.3em] mb-10">
+                    <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-error-light border border-error/20 text-error text-[10px] font-m-black uppercase tracking-[0.3em] mb-10">
                         <AlertCircle className="h-4 w-4" />
-                        Situação Crítica
+                        <AnimatedShinyText className="!text-error">
+                            Situação Crítica
+                        </AnimatedShinyText>
                     </div>
 
-                    <h2 className="text-5xl md:text-7xl font-m-black text-text-primary mb-8 tracking-tighter leading-none">
-                        O Negócio <span className="text-primary italic">Sangra</span> onde você não vê?
+                    <h2 className="text-5xl md:text-7xl font-m-black text-text-dark mb-8 tracking-tighter leading-none">
+                        O Negócio <span className="text-error italic">Sangra</span> onde você não vê?
                     </h2>
 
-                    <p className="text-xl text-text-secondary font-medium max-w-2xl mx-auto">
+                    <p className="text-xl text-text-dark-secondary font-medium max-w-2xl mx-auto">
                         Se você se identifica com mais de dois itens abaixo, seu lucro está sendo destruído por falta de processos técnicos.
                     </p>
                 </motion.div>
@@ -91,4 +91,3 @@ export const Problem = () => {
         </section>
     );
 };
-

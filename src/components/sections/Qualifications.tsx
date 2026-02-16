@@ -21,7 +21,7 @@ export const Qualifications = () => {
     ];
 
     return (
-        <section className="py-24 bg-background-alt overflow-hidden">
+        <section className="section-light py-24 overflow-hidden">
             <div className="container px-6 mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ export const Qualifications = () => {
                     viewport={{ once: true }}
                     className="text-center max-w-3xl mx-auto mb-16"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-text-primary mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-text-dark mb-6">
                         Para quem é (e para quem NÃO é) esta consultoria
                     </h2>
                     <div className="h-1.5 w-20 bg-primary mx-auto rounded-full" />
@@ -41,19 +41,21 @@ export const Qualifications = () => {
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="glass p-8 md:p-12 rounded-radius-card border-primary/20 bg-primary/[0.02]"
+                        className="card-light p-8 md:p-12 rounded-radius-card border-2 border-success/20 bg-success-light/30"
                     >
-                        <h3 className="text-2xl font-extrabold font-montserrat text-primary mb-8 flex items-center gap-3">
-                            <Check className="h-8 w-8" />
+                        <h3 className="text-2xl font-extrabold font-montserrat text-success mb-8 flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-xl bg-success/10 flex items-center justify-center">
+                                <Check className="h-6 w-6" />
+                            </div>
                             É PARA VOCÊ SE:
                         </h3>
                         <ul className="space-y-6">
                             {isFor.map((item, i) => (
                                 <li key={i} className="flex items-start gap-4">
-                                    <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                                        <Check className="h-4 w-4 text-primary" />
+                                    <div className="h-6 w-6 rounded-full bg-success/10 flex items-center justify-center shrink-0 mt-0.5">
+                                        <Check className="h-4 w-4 text-success" />
                                     </div>
-                                    <span className="text-text-description text-lg">{item}</span>
+                                    <span className="text-text-dark text-lg">{item}</span>
                                 </li>
                             ))}
                         </ul>
@@ -64,19 +66,21 @@ export const Qualifications = () => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="glass p-8 md:p-12 rounded-radius-card border-white/5 opacity-80"
+                        className="card-light p-8 md:p-12 rounded-radius-card border-2 border-error/10 bg-error-light/30"
                     >
-                        <h3 className="text-2xl font-extrabold font-montserrat text-text-secondary mb-8 flex items-center gap-3">
-                            <X className="h-8 w-8" />
+                        <h3 className="text-2xl font-extrabold font-montserrat text-text-dark-secondary mb-8 flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-xl bg-error/10 flex items-center justify-center">
+                                <X className="h-6 w-6 text-error" />
+                            </div>
                             NÃO É PARA VOCÊ SE:
                         </h3>
                         <ul className="space-y-6">
                             {isntFor.map((item, i) => (
                                 <li key={i} className="flex items-start gap-4">
-                                    <div className="h-6 w-6 rounded-full bg-white/5 flex items-center justify-center shrink-0 mt-0.5">
-                                        <X className="h-4 w-4 text-text-secondary" />
+                                    <div className="h-6 w-6 rounded-full bg-error/10 flex items-center justify-center shrink-0 mt-0.5">
+                                        <X className="h-4 w-4 text-error" />
                                     </div>
-                                    <span className="text-text-secondary text-lg">{item}</span>
+                                    <span className="text-text-dark-secondary text-lg">{item}</span>
                                 </li>
                             ))}
                         </ul>

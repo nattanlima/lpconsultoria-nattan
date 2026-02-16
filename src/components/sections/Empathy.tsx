@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const Empathy = () => {
     return (
-        <section className="py-32 relative overflow-hidden bg-background">
-            {/* Cinematic Background Gradient */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(250,204,21,0.1),transparent_50%)]" />
+        <section className="py-32 relative overflow-hidden section-dark">
+            {/* Warm bottom glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(245,158,11,0.08),transparent_50%)]" />
 
             {/* Decorative Large Quotes */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 text-[30rem] font-m-black text-primary opacity-[0.02] select-none pointer-events-none leading-none tracking-tighter">
@@ -27,13 +28,13 @@ export const Empathy = () => {
                             </span>
 
                             <p className="text-3xl md:text-5xl font-m-bold text-text-primary leading-[1.15] mb-10 tracking-tight text-balance">
-                                Eu sei exatamente como é isso. Já atendi centenas de empresários no <span className="text-primary italic">olho do furacão</span>.
+                                Eu sei exatamente como é isso. Já atendi centenas de empresários no <span className="heading-gradient italic">olho do furacão</span>.
                             </p>
 
-                            <div className="h-1 w-20 bg-primary/30 mb-10 hidden lg:block" />
+                            <div className="h-1 w-20 bg-primary/40 mb-10 hidden lg:block rounded-full" />
 
                             <p className="text-xl text-text-description leading-relaxed font-medium">
-                                A real é: não falta informação. Falta um <span className="text-text-primary font-m-black p-1 bg-primary/10 rounded-md">PLANO DE ATAQUE</span> personalizado, feito por quem vive a trincheira todos os dias e sabe onde o dinheiro está sendo jogado fora.
+                                A real é: não falta informação. Falta um <span className="text-text-primary font-m-black px-2 py-1 bg-primary/10 rounded-lg border border-primary/15">PLANO DE ATAQUE</span> personalizado, feito por quem vive a trincheira todos os dias e sabe onde o dinheiro está sendo jogado fora.
                             </p>
                         </motion.div>
                     </div>
@@ -45,24 +46,23 @@ export const Empathy = () => {
                         transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         className="relative"
                     >
-                        <div className="h-40 w-40 md:h-56 md:w-56 rounded-[3rem] overflow-hidden border-2 border-primary/20 p-2 glass group shadow-premium bg-background/50">
-                            <div className="h-full w-full rounded-[2.5rem] bg-background-alt flex items-center justify-center text-text-secondary/20 font-m-black text-[10px] uppercase tracking-widest text-center p-6 leading-tight transition-transform duration-700 group-hover:scale-110">
-                                Avatar <br /> Nattan
-                            </div>
-
-                            {/* Signature or Small Badge overlaying the photo area */}
-                            <div className="absolute -bottom-4 -right-4 h-16 w-16 rounded-2xl bg-primary flex items-center justify-center text-white shadow-primary-strong rotate-12">
-                                <span className="font-m-black text-xl">N</span>
+                        <div className="h-44 w-44 md:h-64 md:w-64 rounded-full overflow-hidden border-4 border-primary/20 p-2 group shadow-premium bg-background-alt relative">
+                            <div className="h-full w-full rounded-full overflow-hidden flex items-center justify-center relative bg-background-alt">
+                                <Image
+                                    src="/logo_canal.png"
+                                    alt="Nattan Lima Avatar"
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
                             </div>
                         </div>
 
-                        {/* Dynamic pulsing layers */}
-                        <div className="absolute inset-0 rounded-[3rem] border border-primary/40 animate-ping opacity-10" />
-                        <div className="absolute inset-0 -z-10 bg-primary/20 blur-[60px] rounded-full scale-110 animate-pulse" />
+                        {/* Pulse rings */}
+                        <div className="absolute inset-0 rounded-full border border-primary/30 animate-ping opacity-10" />
+                        <div className="absolute inset-0 -z-10 bg-primary/15 blur-[60px] rounded-full scale-110 animate-pulse" />
                     </motion.div>
                 </div>
             </div>
         </section>
     );
 };
-

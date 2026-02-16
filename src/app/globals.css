@@ -1,33 +1,56 @@
 @import "tailwindcss";
 
 @theme {
-  /* Core Colors - Faz Que Vende Premium (Yellow/Amber Rebrand) */
-  --color-primary: #FACC15;
-  /* Vibrant Yellow */
-  --color-primary-hover: #EAB308;
-  --color-primary-light: rgba(250, 204, 21, 0.1);
+  /* === REFINED GOLD SYSTEM === */
+  --color-primary: #F59E0B;
+  --color-primary-hover: #D97706;
+  --color-primary-accent: #FACC15;
+  --color-primary-light: rgba(245, 158, 11, 0.1);
+  --color-primary-glow: rgba(245, 158, 11, 0.25);
+
+  /* === DARK BAND === */
   --color-background: #020617;
-  /* Deeper Black/Blue for contrast */
-  --color-background-alt: #0F172A;
-  --color-card: rgba(30, 41, 59, 0.5);
+  --color-background-alt: #0A0F1E;
+  --color-card: rgba(15, 23, 42, 0.8);
   --color-border-card: rgba(255, 255, 255, 0.08);
+
+  /* === LIGHT BAND === */
+  --color-surface-light: #FDF8EF;
+  --color-surface-light-alt: #FFF9F0;
+  --color-card-light: #FFFFFF;
+  --color-border-light: rgba(0, 0, 0, 0.06);
+
+  /* === DARK BAND TEXT === */
   --color-text-primary: #F8FAFC;
   --color-text-secondary: #94A3B8;
   --color-text-description: #CBD5E1;
-  --color-error: #EF4444;
-  --color-warning: #F59E0B;
 
-  /* Typography - Standardized Montserrat */
+  /* === LIGHT BAND TEXT === */
+  --color-text-dark: #0F172A;
+  --color-text-dark-secondary: #475569;
+  --color-text-dark-description: #64748B;
+  --color-primary-on-light: #92400E;
+
+  /* === ACCENTS === */
+  --color-error: #DC2626;
+  --color-error-light: #FEE2E2;
+  --color-warning: #F59E0B;
+  --color-success: #059669;
+  --color-success-light: #D1FAE5;
+
+  /* === TYPOGRAPHY === */
   --font-montserrat: "Montserrat", sans-serif;
   --font-open-sans: "Open Sans", sans-serif;
 
-  /* Design Tokens */
+  /* === DESIGN TOKENS === */
   --radius-card: 24px;
   --radius-button: 16px;
 
-  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.3);
-  --shadow-primary: 0 0 30px rgba(250, 204, 21, 0.15);
-  --shadow-primary-strong: 0 0 50px rgba(250, 204, 21, 0.3);
+  --shadow-premium: 0 25px 60px rgba(0, 0, 0, 0.4);
+  --shadow-primary: 0 0 40px rgba(245, 158, 11, 0.15);
+  --shadow-primary-strong: 0 0 60px rgba(245, 158, 11, 0.3);
+  --shadow-light: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-light-hover: 0 8px 40px rgba(0, 0, 0, 0.1);
 }
 
 :root {
@@ -44,7 +67,9 @@ body {
   line-height: 1.6;
 }
 
-/* Typography Helpers - Standardized Montserrat */
+/* ========================================
+   TYPOGRAPHY HELPERS
+   ======================================== */
 .font-m-bold {
   font-family: var(--font-montserrat);
   font-weight: 700;
@@ -60,15 +85,50 @@ body {
   font-weight: 900;
 }
 
+/* ========================================
+   SURFACE STYLES
+   ======================================== */
+
+/* Dark band card */
 .glass {
   background: var(--color-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--color-border-card);
   box-shadow: var(--shadow-premium);
 }
 
-/* Soul & Life Effects */
+/* Light band card */
+.card-light {
+  background: var(--color-card-light);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-light);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.card-light:hover {
+  box-shadow: var(--shadow-light-hover);
+}
+
+/* ========================================
+   SECTION BAND HELPERS
+   ======================================== */
+.section-dark {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+.section-dark-alt {
+  background-color: var(--color-background-alt);
+  color: var(--color-text-primary);
+}
+
+.section-light {
+  background-color: var(--color-surface-light);
+  color: var(--color-text-dark);
+}
+
+/* ========================================
+   EFFECTS & ANIMATIONS
+   ======================================== */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(20px);
@@ -85,7 +145,122 @@ body {
 }
 
 .heading-gradient {
-  background: linear-gradient(135deg, #FACC15 0%, #EAB308 100%);
+  background: linear-gradient(135deg, #FACC15 0%, #F59E0B 50%, #D97706 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Section divider — smooth gradient transition */
+.divider-dark-to-light {
+  height: 120px;
+  background: linear-gradient(to bottom, var(--color-background) 0%, var(--color-surface-light) 100%);
+}
+
+.divider-light-to-dark {
+  height: 120px;
+  background: linear-gradient(to bottom, var(--color-surface-light) 0%, var(--color-background) 100%);
+}
+
+/* Hide Google Calendar Floating Button Bug */
+[data-api-load-scheduling-button="true"],
+.calendar-scheduling-button-container,
+[class*="calendar-scheduling-button"],
+#google-calendar-official-container button {
+  display: none !important;
+}
+/* ========================================
+   FLYING MONEY ANIMATION
+   ======================================== */
+@keyframes fly-horizontal {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100vw + 200px)) translateY(-50px) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+.animate-fly-horizontal {
+  animation: fly-horizontal linear infinite;
+}
+
+/* ========================================
+   SHIMMER ANIMATION
+   ======================================== */
+@keyframes shimmer {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shimmer-width)) 0;
+  }
+  30%, 60% {
+    background-position: calc(100% + var(--shimmer-width)) 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 8s infinite;
+}
+
+/* ========================================
+   LIGHT RAYS ANIMATION
+   ======================================== */
+@keyframes light-ray {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-light-ray {
+  animation: light-ray linear infinite;
+}
+
+/* ========================================
+   MARQUEE ANIMATIONS
+   ======================================== */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 1rem));
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(calc(-100% - 1rem));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--marquee-duration, 40s) linear infinite;
+}
+
+/* ========================================
+   HIDE NEXT.JS ERROR INDICATOR
+   ======================================== */
+#webpack-dev-server-client-overlay,
+#webpack-dev-server-client-overlay-div,
+nextjs-portal,
+[id^='__next-build-watcher'] {
+  display: none !important;
 }

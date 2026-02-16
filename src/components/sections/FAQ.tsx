@@ -13,15 +13,14 @@ const FAQItem = ({ question, answer, i }: { question: string, answer: string, i:
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.05 }}
-            className="mb-6"
+            className="mb-4"
         >
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full text-left p-8 rounded-2xl glass border-primary/10 flex items-center justify-between hover:border-primary/30 transition-all duration-500 group relative overflow-hidden"
+                className={`w-full text-left p-8 rounded-2xl card-light flex items-center justify-between transition-all duration-500 group relative overflow-hidden ${isOpen ? 'border-2 border-primary/30 shadow-light-hover' : ''}`}
             >
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="font-m-bold text-text-primary pr-8 text-lg relative z-10">{question}</span>
-                <ChevronDown className={`h-6 w-6 text-primary transition-transform duration-500 relative z-10 ${isOpen ? 'rotate-180' : ''}`} />
+                <span className="font-m-bold text-text-dark pr-8 text-lg relative z-10">{question}</span>
+                <ChevronDown className={`h-6 w-6 text-primary transition-transform duration-500 relative z-10 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
             </button>
             <AnimatePresence>
                 {isOpen && (
@@ -32,7 +31,7 @@ const FAQItem = ({ question, answer, i }: { question: string, answer: string, i:
                         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         className="overflow-hidden"
                     >
-                        <div className="p-8 text-text-description leading-relaxed border-x border-b border-primary/10 rounded-b-2xl bg-primary/5 text-lg">
+                        <div className="p-8 text-text-dark-description leading-relaxed border-x border-b border-primary/10 rounded-b-2xl bg-white text-lg">
                             {answer}
                         </div>
                     </motion.div>
@@ -71,7 +70,7 @@ export const FAQ = () => {
     ];
 
     return (
-        <section className="py-32 bg-background relative overflow-hidden">
+        <section className="section-light py-32 relative overflow-hidden">
             <div className="container px-6 mx-auto relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-20">
                     <motion.div
@@ -82,10 +81,10 @@ export const FAQ = () => {
                     >
                         <HelpCircle className="h-8 w-8" />
                     </motion.div>
-                    <h2 className="text-4xl md:text-5xl font-m-black text-text-primary mb-6 tracking-tight">
+                    <h2 className="text-4xl md:text-5xl font-m-black text-text-dark mb-6 tracking-tight">
                         Ficou alguma <span className="text-primary italic">dúvida?</span>
                     </h2>
-                    <p className="text-xl text-text-secondary font-medium">Tudo o que você precisa saber antes de reservar sua vaga.</p>
+                    <p className="text-xl text-text-dark-secondary font-medium">Tudo o que você precisa saber antes de reservar sua vaga.</p>
                 </div>
 
                 <div className="max-w-4xl mx-auto">
@@ -97,4 +96,3 @@ export const FAQ = () => {
         </section>
     );
 };
-
