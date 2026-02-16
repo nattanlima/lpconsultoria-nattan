@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description: "Tenha 1 hora exclusiva para resolver gargalos no WhatsApp, tráfego pago e automação. Diagnóstico + plano de ação personalizado.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/logo_canal.png",
         width: 1200,
         height: 630,
         alt: "Faz Que Vende - Consultoria Individual",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Consultoria Estratégica com Nattan Lima",
     description: "1 Hora Para Destravar as Vendas do Seu Negócio",
-    images: ["/og-image.png"],
+    images: ["/logo_canal.png"],
   },
 };
 
