@@ -76,7 +76,7 @@ export const About = () => {
                                     <Youtube className="h-7 w-7" />
                                 </div>
                                 <div>
-                                    <div className="text-2xl font-m-black text-text-dark leading-tight tracking-tight">+22.7K</div>
+                                    <div className="text-2xl font-m-black text-text-dark leading-tight tracking-tight">+90 mil</div>
                                     <div className="text-[10px] uppercase text-text-dark-secondary tracking-[0.2em] font-m-bold opacity-70">Inscritos Fiéis</div>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@ export const About = () => {
 
                             {/* Credibility Badges */}
                             <div className="flex flex-wrap gap-4 mb-16">
-                                <CredibilityBadge icon={Youtube} text="22.7K+ inscritos" delay={0.4} />
+                                <CredibilityBadge icon={Youtube} text="90 mil+ inscritos" delay={0.4} />
                                 <CredibilityBadge icon={MessageCircle} text="1.000+ no WhatsApp" delay={0.5} />
                                 <CredibilityBadge icon={PlayCircle} text="118+ aulas práticas" delay={0.6} />
                                 <CredibilityBadge icon={Cpu} text="Especialista N8N + IA" delay={0.7} />
