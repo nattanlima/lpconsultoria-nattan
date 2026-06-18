@@ -117,7 +117,7 @@ export const Hero = () => {
 
                         {/* Stats Bar */}
                         <div className="flex flex-wrap justify-center lg:justify-start gap-10 lg:gap-16 py-8 border-t border-white/5 w-full">
-                            <StatItem icon={Youtube} value={30000} suffix="+" label="no YouTube" delay={0.8} />
+                            <StatItem icon={Youtube} value={90000} suffix="+" label="no YouTube" delay={0.8} />
                             <StatItem icon={Users} value={1500} suffix="+" label="membros" delay={0.9} />
                             <StatItem icon={PlayCircle} value={125} label="aulas" delay={1.0} />
                             <StatItem icon={TrendingUp} value={16} suffix="+ anos" label="de vendas" delay={1.1} />
