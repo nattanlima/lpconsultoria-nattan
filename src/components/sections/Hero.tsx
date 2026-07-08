@@ -20,7 +20,8 @@ const StatItem = ({ icon: Icon, value, suffix = "", label, delay }: { icon: Reac
         </div>
         <div>
             <div className="text-2xl font-m-bold text-text-primary leading-tight">
-                <NumberTicker value={value} />{suffix}
+                <span aria-hidden="true"><NumberTicker value={value} />{suffix}</span>
+                <span className="sr-only">{value.toLocaleString("pt-BR")}{suffix}</span>
             </div>
             <div className="text-[10px] font-m-black uppercase tracking-[0.2em] text-text-secondary opacity-70">{label}</div>
         </div>
@@ -76,6 +77,7 @@ export const Hero = () => {
                                 pauseDelay={2000}
                                 loop={false}
                             />
+                            <span className="sr-only">Destravar as Vendas do Seu Negócio</span>
                         </motion.h1>
 
                         <motion.p

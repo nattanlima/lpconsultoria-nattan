@@ -110,10 +110,10 @@ export const SocialProof = () => {
                             <AvatarCircles
                                 numPeople={297}
                                 avatarUrls={[
-                                    "https://i.pravatar.cc/150?img=1",
-                                    "https://i.pravatar.cc/150?img=2",
-                                    "https://i.pravatar.cc/150?img=3",
-                                    "https://i.pravatar.cc/150?img=4"
+                                    "/avatars/cliente-1.png",
+                                    "/avatars/cliente-2.png",
+                                    "/avatars/cliente-3.png",
+                                    "/avatars/cliente-4.png"
                                 ]}
                             />
                             <p className="text-text-secondary text-sm font-medium">

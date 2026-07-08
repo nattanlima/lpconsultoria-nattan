@@ -27,7 +27,7 @@ export const Footer = () => {
 
                     <div className="flex items-center gap-4">
                         {[
-                            { icon: Youtube, href: "https://youtube.com/@fazquevende" },
+                            { icon: Youtube, href: "https://www.youtube.com/@fazqvende" },
                             { icon: Instagram, href: "https://www.instagram.com/nattan.prisme" },
                             { icon: Linkedin, href: "https://www.linkedin.com/in/nattanlima/" },
                             { icon: MessageCircle, href: "#" }
