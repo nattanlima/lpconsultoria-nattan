@@ -2,10 +2,32 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Youtube, Users, PlayCircle, ArrowRight, ChevronDown, TrendingUp, Globe } from "lucide-react";
+import { Youtube, Users, PlayCircle, ArrowRight, ChevronDown, TrendingUp, Globe, ClipboardCheck, ShieldCheck } from "lucide-react";
 import { TypingAnimation } from "@/components/ui/TypingAnimation";
 import { NumberTicker } from "@/components/ui/NumberTicker";
 import { AnimatedShinyText } from "@/components/ui/AnimatedShinyText";
+
+const FloatingBadge = ({ icon: Icon, text, className, delay, duration }: { icon?: React.ElementType, text: string, className: string, delay: number, duration: number }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay }}
+        className={`absolute z-30 hidden md:block ${className}`}
+    >
+        <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration, repeat: Infinity, ease: "easeInOut" }}
+            className="flex items-center gap-3 px-5 py-3.5 rounded-2xl border border-primary/20 bg-background/90 shadow-premium"
+        >
+            {Icon ? (
+                <Icon className="h-4 w-4 text-primary shrink-0" />
+            ) : (
+                <span className="h-2 w-2 rounded-full bg-primary animate-pulse shrink-0" />
+            )}
+            <span className="text-xs font-m-black uppercase tracking-wider text-text-primary whitespace-nowrap">{text}</span>
+        </motion.div>
+    </motion.div>
+);
 
 const StatItem = ({ icon: Icon, value, suffix = "", label, delay }: { icon: React.ElementType, value: number, suffix?: string, label: string, delay: number }) => (
     <motion.div
@@ -86,7 +108,7 @@ export const Hero = () => {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="text-xl md:text-2xl text-text-secondary max-w-2xl mb-12 leading-relaxed font-medium"
                         >
-                            Estratégias personalizadas de WhatsApp, Chatbots e Automação — direto ao ponto para o SEU negócio.
+                            Estratégias personalizadas de WhatsApp, Chatbots e Automação, direto ao ponto para o SEU negócio.
                         </motion.p>
 
                         <motion.div
@@ -119,7 +141,7 @@ export const Hero = () => {
 
                         {/* Stats Bar */}
                         <div className="flex flex-wrap justify-center lg:justify-start gap-10 lg:gap-16 py-8 border-t border-white/5 w-full">
-                            <StatItem icon={Youtube} value={90000} suffix="+" label="no YouTube" delay={0.8} />
+                            <StatItem icon={Youtube} value={110000} suffix="+" label="no YouTube" delay={0.8} />
                             <StatItem icon={Users} value={1500} suffix="+" label="membros" delay={0.9} />
                             <StatItem icon={PlayCircle} value={125} label="aulas" delay={1.0} />
                             <StatItem icon={TrendingUp} value={16} suffix="+ anos" label="de vendas" delay={1.1} />
@@ -134,28 +156,24 @@ export const Hero = () => {
                         transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         className="lg:col-span-12 xl:col-span-5 relative"
                     >
-                        <div className="relative z-10 w-full aspect-[4/5] max-w-[480px] mx-auto overflow-hidden rounded-[2.5rem] border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)] flex items-center justify-center group bg-background-alt">
-                            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-20 pointer-events-none" />
+                        <div className="relative w-full max-w-[480px] mx-auto">
+                            <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)] flex items-center justify-center group bg-background-alt">
+                                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-20 pointer-events-none" />
 
-                            <Image
-                                src="/principal.png"
-                                alt="Nattan Lima"
-                                fill
-                                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                                priority
-                            />
+                                <Image
+                                    src="/principal.png"
+                                    alt="Nattan Lima"
+                                    fill
+                                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                                    priority
+                                />
+                            </div>
 
-                            {/* Floating tag */}
-                            <motion.div
-                                animate={{ y: [0, -10, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -right-6 bottom-1/4 px-6 py-4 rounded-2xl border border-primary/20 z-30 hidden md:block bg-background/90 shadow-premium"
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                                    <span className="text-xs font-m-black uppercase tracking-wider text-text-primary">Vendas Destravadas</span>
-                                </div>
-                            </motion.div>
+                            {/* Floating badges */}
+                            <FloatingBadge icon={ShieldCheck} text="Suporte por 7 Dias" className="-right-4 top-[10%]" delay={0.8} duration={4.5} />
+                            <FloatingBadge icon={ClipboardCheck} text="Plano de Ação em 1h" className="-left-6 top-[26%]" delay={1.0} duration={5} />
+                            <FloatingBadge text="Vendas Destravadas" className="-right-6 bottom-[24%]" delay={1.2} duration={4} />
+                            <FloatingBadge icon={TrendingUp} text="+16 Anos de Vendas" className="-left-4 bottom-[8%]" delay={1.4} duration={5.5} />
                         </div>
 
                         {/* Glow effects */}

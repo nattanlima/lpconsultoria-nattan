@@ -76,7 +76,7 @@ export const About = () => {
                                     <Youtube className="h-7 w-7" />
                                 </div>
                                 <div>
-                                    <div className="text-2xl font-m-black text-text-dark leading-tight tracking-tight">+90 mil</div>
+                                    <div className="text-2xl font-m-black text-text-dark leading-tight tracking-tight">+110 mil</div>
                                     <div className="text-[10px] uppercase text-text-dark-secondary tracking-[0.2em] font-m-bold opacity-70">Inscritos Fiéis</div>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@ export const About = () => {
                                     Há mais de 5 anos, ajudo pequenos e médios empresários a <span className="text-text-dark font-m-bold italic underline decoration-primary/40">destravarem o lucro</span> através da internet.
                                 </p>
                                 <p>
-                                    Fundei a <span className="text-text-dark font-m-black">Prisme Sales</span> — uma consultoria focada em escala real via WhatsApp Business, automações avançadas e inteligência artificial.
+                                    Fundei a <span className="text-text-dark font-m-black">Prisme Sales</span>, uma consultoria focada em escala real via WhatsApp Business, automações avançadas e inteligência artificial.
                                 </p>
                                 <p className="p-8 rounded-[2rem] bg-white border-l-4 border-primary italic text-text-dark font-medium text-lg relative group shadow-light">
                                     <span className="absolute -top-4 -left-2 text-6xl text-primary/20 font-m-black group-hover:text-primary/30 transition-colors">&ldquo;</span>
@@ -121,7 +121,7 @@ export const About = () => {
 
                             {/* Credibility Badges */}
                             <div className="flex flex-wrap gap-4 mb-16">
-                                <CredibilityBadge icon={Youtube} text="90 mil+ inscritos" delay={0.4} />
+                                <CredibilityBadge icon={Youtube} text="110 mil+ inscritos" delay={0.4} />
                                 <CredibilityBadge icon={MessageCircle} text="1.000+ no WhatsApp" delay={0.5} />
                                 <CredibilityBadge icon={PlayCircle} text="118+ aulas práticas" delay={0.6} />
                                 <CredibilityBadge icon={Cpu} text="Especialista N8N + IA" delay={0.7} />

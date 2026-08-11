@@ -71,17 +71,17 @@ export const Inclusions = () => {
                                 <BonusCard
                                     icon={Gift}
                                     title="BÔNUS 1: Gravação"
-                                    description="Gravação completa da sessão — Reveja quantas vezes quiser."
+                                    description="Gravação completa da sessão. Reveja quantas vezes quiser."
                                 />
                                 <BonusCard
                                     icon={Gift}
                                     title="BÔNUS 2: Checklist"
-                                    description="Checklist de Implementação em PDF — Passo a passo do que fazer após a call."
+                                    description="Checklist de Implementação em PDF. Passo a passo do que fazer após a call."
                                 />
                                 <BonusCard
                                     icon={Gift}
                                     title="BÔNUS 3: Grupo VIP"
-                                    description="Acesso ao grupo VIP no WhatsApp por 7 dias — Para dúvidas rápidas pós-consultoria."
+                                    description="Acesso ao grupo VIP no WhatsApp por 7 dias. Para dúvidas rápidas pós-consultoria."
                                 />
                             </div>
                         </motion.div>

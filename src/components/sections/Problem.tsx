@@ -1,39 +1,72 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform, useReducedMotion, MotionValue } from "framer-motion";
 import { TrendingDown, MessageSquareX, Bot, BookOpen, AlertCircle } from "lucide-react";
 import { AnimatedShinyText } from "@/components/ui/AnimatedShinyText";
 
-const ProblemCard = ({ icon: Icon, title, description, delay }: { icon: React.ElementType, title: string, description: string, delay: number }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-        className="card-light p-10 rounded-[2rem] hover:border-error/30 group relative overflow-hidden hover:-translate-y-2 transition-all duration-500"
-    >
-        <div className="absolute top-0 right-0 p-4 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity">
-            <Icon className="h-24 w-24 text-text-dark" />
-        </div>
+// Cada card voa sozinho, um de cada vez: janelas de scroll quase sem sobreposição,
+// partindo de bem alto na página. Valores fixos por card
+// (Math.random() de verdade quebraria a hidratação server/client)
+const FLIGHT_DURATION = 0.32;
+const FLIGHT_PATHS = [
+    { y: -900, x: -70, rotate: -12, start: 0 },
+    { y: -1050, x: 90, rotate: 9, start: 0.22 },
+    { y: -850, x: -110, rotate: 15, start: 0.44 },
+    { y: -980, x: 60, rotate: -9, start: 0.66 },
+];
 
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-error-light mb-8 group-hover:scale-110 transition-all duration-500">
-            <Icon className="h-7 w-7 text-error" />
-        </div>
+const ProblemCard = ({ icon: Icon, title, description, index, progress }: { icon: React.ElementType, title: string, description: string, index: number, progress: MotionValue<number> }) => {
+    const path = FLIGHT_PATHS[index % FLIGHT_PATHS.length];
+    const start = path.start;
+    const end = Math.min(start + FLIGHT_DURATION, 1);
+    const reduceMotion = useReducedMotion();
 
-        <h3 className="text-xl font-m-black mb-4 text-text-dark leading-tight tracking-tight uppercase group-hover:text-error transition-colors">
-            {title}
-        </h3>
+    const x = useTransform(progress, [start, end], [path.x, 0]);
+    const y = useTransform(progress, [start, end], [path.y, 0]);
+    const rotate = useTransform(progress, [start, end], [path.rotate, 0]);
+    const scale = useTransform(progress, [start, end], [0.9, 1]);
+    const opacity = useTransform(progress, [start, start + FLIGHT_DURATION * 0.4], [0, 1]);
 
-        <p className="text-text-dark-description leading-relaxed font-medium">
-            {description}
-        </p>
+    return (
+        <motion.div
+            style={reduceMotion ? undefined : { x, y, rotate, scale, opacity }}
+            className="will-change-transform"
+        >
+            <div className="card-light h-full p-10 rounded-[2rem] hover:border-error/30 group relative overflow-hidden hover:-translate-y-2 transition-all duration-500">
+                <div className="absolute top-0 right-0 p-4 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity">
+                    <Icon className="h-24 w-24 text-text-dark" />
+                </div>
 
-        {/* Card Accent */}
-        <div className="absolute bottom-0 left-0 h-1 w-0 bg-error group-hover:w-full transition-all duration-700 rounded-full" />
-    </motion.div>
-);
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-error-light mb-8 group-hover:scale-110 transition-all duration-500">
+                    <Icon className="h-7 w-7 text-error" />
+                </div>
+
+                <h3 className="text-xl font-m-black mb-4 text-text-dark leading-tight tracking-tight uppercase group-hover:text-error transition-colors">
+                    {title}
+                </h3>
+
+                <p className="text-text-dark-description leading-relaxed font-medium">
+                    {description}
+                </p>
+
+                {/* Card Accent */}
+                <div className="absolute bottom-0 left-0 h-1 w-0 bg-error group-hover:w-full transition-all duration-700 rounded-full" />
+            </div>
+        </motion.div>
+    );
+};
 
 export const Problem = () => {
+    const gridRef = useRef<HTMLDivElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: gridRef,
+        offset: ["start end", "end 0.7"],
+    });
+
+    const smoothProgress = useSpring(scrollYProgress, { stiffness: 90, damping: 22, mass: 0.5 });
+
     const problems = [
         {
             icon: TrendingDown,
@@ -82,9 +115,9 @@ export const Problem = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div ref={gridRef} className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                     {problems.map((p, i) => (
-                        <ProblemCard key={i} {...p} delay={i * 0.15} />
+                        <ProblemCard key={i} {...p} index={i} progress={smoothProgress} />
                     ))}
                 </div>
             </div>
