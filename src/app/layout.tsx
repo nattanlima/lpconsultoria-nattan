@@ -92,6 +92,13 @@ fbq('track', 'PageView');`}
         </noscript>
         <FlyingMoney />
         {children}
+        {/* Tag Klicou - atribuicao de origem e leads (workspace FAZQVENDE) */}
+        <Script
+          id="klicou-tag"
+          src="https://go.klicou.com.br/tag.js?k=kt_e527dcc9a4672828"
+          strategy="afterInteractive"
+        />
+        {/* End Tag Klicou */}
       </body>
     </html>
   );
